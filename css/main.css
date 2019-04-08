@@ -192,7 +192,7 @@ body {
   -o-transition: color 0.6s ease;
   transition: color 0.6s ease; }
 
-.slaid-title__dop-text {
+.slaid-title__dop-text, .slaid-title__post-text {
   font-family: MontserratAlternates;
   font-size: 11.4px;
   font-weight: normal;
@@ -202,8 +202,25 @@ body {
   letter-spacing: normal;
   color: #ffffff;
   margin-top: 3px;
-  margin-bottom: 11.5px;
+  margin-bottom: 11.5px; }
+
+.slaid-title__dop-text {
   display: block; }
+
+.slaid-title__post-text {
+  display: none;
+  color: #000;
+  opacity: 0;
+  -webkit-transition: opacity 0.6s ease;
+  -o-transition: opacity 0.6s ease;
+  transition: opacity 0.6s ease; }
+
+.project-slaider__slaid-wrap:hover .slaid-title__dop-text {
+  display: none; }
+
+.project-slaider__slaid-wrap:hover .slaid-title__post-text {
+  display: block;
+  opacity: 1; }
 
 .project-slaider__slaid-img {
   -webkit-flex-basis: auto;
@@ -320,7 +337,6 @@ body {
 .project-slaider__dot-item {
   display: inline-block;
   background: rgba(255, 255, 255, 0.38);
-  cursor: pointer;
   width: 11px;
   height: 11px;
   -webkit-border-radius: 50%;
