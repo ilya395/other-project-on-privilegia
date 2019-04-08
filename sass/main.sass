@@ -102,6 +102,15 @@ body
 	&:hover
 		.slaid-title__dop-text
 			color: #000
+	&:focus
+		border: solid 1px transparent
+		box-sizing: border-box
+	&:focus
+		.project-slaider__slaid-title
+			background-color: #ffffff
+	&:focus
+		.slaid-title__dop-text
+			color: #000
 .project-slaider__slaid-link
 	text-decoration: none
 	display: flex
@@ -158,6 +167,12 @@ body
 		.slaid-title__post-text
 			display: block
 			opacity: 1
+	&:focus
+		.slaid-title__dop-text
+			display: none
+		.slaid-title__post-text
+			display: block
+			opacity: 1
 .project-slaider__slaid-img
 	flex-basis: auto //119px * 2
 	display: flex
@@ -206,6 +221,9 @@ body
 	&:hover
 		&:after
 			background-color: rgba(255, 255, 255, 0.38)
+	&:focus
+		&:after
+			background-color: rgba(255, 255, 255, 0.38)
 	//left: -60px
 .project-slaider__arrow-item.on-right
 	//right: -60px
@@ -224,6 +242,9 @@ body
 		cursor: pointer
 		transition: background-color 0.6s ease
 	&:hover
+		&:after
+			background-color: rgba(255, 255, 255, 0.38)
+	&:focus
 		&:after
 			background-color: rgba(255, 255, 255, 0.38)
 .slider__control_show

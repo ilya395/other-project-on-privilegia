@@ -130,6 +130,14 @@ body {
     background-color: #ffffff; }
   .project-slaider__slaid-wrap:hover .slaid-title__dop-text {
     color: #000; }
+  .project-slaider__slaid-wrap:focus {
+    border: solid 1px transparent;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box; }
+  .project-slaider__slaid-wrap:focus .project-slaider__slaid-title {
+    background-color: #ffffff; }
+  .project-slaider__slaid-wrap:focus .slaid-title__dop-text {
+    color: #000; }
 
 .project-slaider__slaid-link {
   text-decoration: none;
@@ -222,6 +230,13 @@ body {
   display: block;
   opacity: 1; }
 
+.project-slaider__slaid-wrap:focus .slaid-title__dop-text {
+  display: none; }
+
+.project-slaider__slaid-wrap:focus .slaid-title__post-text {
+  display: block;
+  opacity: 1; }
+
 .project-slaider__slaid-img {
   -webkit-flex-basis: auto;
       -ms-flex-preferred-size: auto;
@@ -292,6 +307,8 @@ body {
     transition: background-color 0.6s ease; }
   .project-slaider__arrow-item.on-left:hover:after {
     background-color: rgba(255, 255, 255, 0.38); }
+  .project-slaider__arrow-item.on-left:focus:after {
+    background-color: rgba(255, 255, 255, 0.38); }
 
 .project-slaider__arrow-item.on-right:after {
   content: "\2192";
@@ -313,6 +330,9 @@ body {
   transition: background-color 0.6s ease; }
 
 .project-slaider__arrow-item.on-right:hover:after {
+  background-color: rgba(255, 255, 255, 0.38); }
+
+.project-slaider__arrow-item.on-right:focus:after {
   background-color: rgba(255, 255, 255, 0.38); }
 
 .slider__control_show {
