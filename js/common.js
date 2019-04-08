@@ -18,7 +18,9 @@ var multiItemSlider = (function () {
       _positionLeftItem = 0, // позиция левого активного элемента
       _transform = 0, // значение трансформации .slider_wrapper
       _step = _itemWidth / _wrapperWidth * 100, // величина шага (для трансформации)
-      _items = []; // массив элементов
+      _items = [], // массив элементов
+
+      _sliderControlDots = _mainElement.querySelectorAll('.project-slaider__dot-item'); // массив кнопочек
       
       console.log(_sliderWrapper);
       console.log(_sliderItems.length);
@@ -27,6 +29,7 @@ var multiItemSlider = (function () {
       console.log(_sliderControlRight);
       console.log(_wrapperWidth);
       console.log(_itemWidth);
+      console.log(_sliderControlDots.length);
 
     // наполнение массива _items
     _sliderItems.forEach(function (item, index) {
@@ -60,8 +63,13 @@ var multiItemSlider = (function () {
       }
     }
 
+    var slideIndex = 1;
+
     var _transformItem = function (direction) {
       var nextItem;
+
+      showSlides(slideIndex);
+
       if (direction === 'right') {
         _positionLeftItem++;
         if ((_positionLeftItem + _wrapperWidth / _itemWidth - 1) > position.getMax()) {
@@ -71,6 +79,8 @@ var multiItemSlider = (function () {
           _items[nextItem].item.style.transform = 'translateX(' + _items[nextItem].transform + '%)';
         }
         _transform -= _step;
+        showSlides(slideIndex += 1);
+        console.log(slideIndex);
       }
       if (direction === 'left') {
         _positionLeftItem--;
@@ -81,8 +91,27 @@ var multiItemSlider = (function () {
           _items[nextItem].item.style.transform = 'translateX(' + _items[nextItem].transform + '%)';
         }
         _transform += _step;
+        showSlides(slideIndex -= 1);
+        console.log(slideIndex);
       }
       _sliderWrapper.style.transform = 'translateX(' + _transform + '%)';
+
+      function showSlides(n) {
+
+        if (n > _sliderControlDots.length) {
+          slideIndex = 1;
+        }
+        if (n < 1) {
+          slideIndex = _sliderControlDots.length;
+        }
+
+        for (var i = 0; i < _sliderControlDots.length; i++) {
+          _sliderControlDots[i].className = _sliderControlDots[i].className.replace("active", "");
+        }
+
+        _sliderControlDots[slideIndex - 1].className += " active";
+      }
+
     }
 
     // обработчик события click для кнопок "назад" и "вперед"

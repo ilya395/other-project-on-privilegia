@@ -3,7 +3,7 @@
 
 @font-face
 	font-family: Oswald
-	src: url(../fonts/Oswald/Oswald-Regular.ttf)
+	src: url(../fonts/Oswald/Oswald-Light.ttf)
 	font-weight: normal
 @font-face
 	font-family: Oswald
@@ -47,7 +47,7 @@ body
 	margin-right: -15px
 .project-slaider__container-title
 	font-family: Oswald;
-	font-size: 22.5px
+	font-size: 22.5px * 2
 	font-weight: bold
 	font-style: normal
 	font-stretch: normal
@@ -64,6 +64,8 @@ body
 	overflow: hidden
 	//padding-left: -15px
 	//padding-right: -15px
+.project-slaider__slaid
+	box-sizing: border-box
 .project-slaider__slaids-row
 	display: flex
 	flex-wrap: nowrap
@@ -73,8 +75,8 @@ body
 	box-sizing: border-box
 	transition: transform 0.6s ease
 .project-slaider__slaid
-	flex-basis: 25%
-	max-width: 25%
+	flex-basis: 20%
+	max-width: 20%
 	flex-grow: 0
 	flex-shrink: 0
 	padding-right: 15px
@@ -83,22 +85,30 @@ body
 	margin-top: 50px
 	margin-bottom: 50px
 .project-slaider__slaid-wrap
-	box-shadow: 4px 4px 10px 1px rgba(0, 0, 0, 0.33)
 	background-color: #ffffff
-	height: 177px
+	height: auto//177px * 2
 	width: 100%
 	overflow: hidden
 	background-color: #000000
-	border: solid 0.5px #ae755c
-	//transition: box-shadow 0.01s ease
+	border: solid 1px #ae755c
+	transition: border 0.6s ease
+	box-sizing: border-box
 	&:hover
-		box-shadow: 4px 4px 10px 1px rgba(0, 0, 0, 0.45)
+		border: solid 1px transparent
+		box-sizing: border-box
+	&:hover
+		.project-slaider__slaid-title
+			background-color: #ffffff
+	&:hover
+		.slaid-title__dop-text
+			color: #000
 .project-slaider__slaid-link
 	text-decoration: none
 	display: flex
 	flex-direction: column-reverse
 	width: 100%
 	height: 100%
+	box-sizing: border-box
 .project-slaider__slaid-title
 	flex-basis: auto
 	position: relative
@@ -106,10 +116,13 @@ body
 	flex-direction: column
 	justify-content: center
 	align-items: center
+	background-color: transparent
+	transition: background-color 0.6s ease
+	box-sizing: border-box
 .slaid-title__text
 	position: relative
 	font-family: Oswald
-	font-size: 15px
+	font-size: 15px * 2
 	font-weight: 300
 	font-style: normal
 	font-stretch: normal
@@ -118,9 +131,10 @@ body
 	text-align: center
 	color: #e5b6a3
 	display: block
+	transition: color 0.6s ease
 .slaid-title__dop-text
 	font-family: MontserratAlternates;
-	font-size: 5px
+	font-size: 5.7px * 2
 	font-weight: normal
 	font-style: normal
 	font-stretch: normal
@@ -132,7 +146,7 @@ body
 		bottom: 11.5px
 	display: block
 .project-slaider__slaid-img
-	flex-basis: 119px
+	flex-basis: auto //119px * 2
 	display: flex
 	flex-direction: row-reverse
 	overflow: hidden
@@ -149,69 +163,147 @@ body
 	width: 100%
 .project-slaider__arrows
 	position: absolute
-	top: -165px
 	width: 100%
 .project-slaider__arrow-item
-	background: url(../img/arrow.png) 0 0 no-repeat
+	//background: url(../img/arrow.png) 0 0 no-repeat
 	position: absolute
-	cursor: pointer
-	width: 32px
-	height: 58px
-	transition: background-color 0.3s ease
-	&:hover
-		//box-shadow: inset 5px 5px 5px 1px rgba(0, 0, 0, 0.33)
-		background-color: rgba(0, 0, 0, 0.05)
+	top: -410px
+	bottom: 0
+	width: 100px
+	height: 360px
+	background-image: linear-gradient(to right, rgba(0, 0, 0, 0), #000000)
+	transition: background-color 0.6s ease
+	margin-bottom: 50px
 .project-slaider__arrow-item.on-left
 	transform: rotate(180deg)
-	left: -60px
+	&:after
+		content: "\2192"
+		position: absolute
+		background-color: rgba(255, 255, 255, 0.19)
+		color: #000000
+		top: calc(50% - 25px)
+		font-size: 30px
+		padding: 5px 10px 5px 10px
+		font-weight: 400
+		border-radius: 50%
+		border: 1px solid transparent
+		left: 30px
+		cursor: pointer
+		transition: background-color 0.6s ease
+	&:hover
+		&:after
+			background-color: rgba(255, 255, 255, 0.38)
+	//left: -60px
 .project-slaider__arrow-item.on-right
-	right: -60px
-
+	//right: -60px
+	&:after
+		content: "\2192"
+		position: absolute
+		background-color: rgba(255, 255, 255, 0.19)
+		color: #000000
+		top: calc(50% - 25px)
+		font-size: 30px
+		padding: 5px 10px 11px 10px
+		font-weight: 400
+		border-radius: 50%
+		border: 1px solid transparent
+		left: 30px
+		cursor: pointer
+		transition: background-color 0.6s ease
+	&:hover
+		&:after
+			background-color: rgba(255, 255, 255, 0.38)
 .slider__control_show
 	display: flex
 
+.project-slaider__dots
+	position: absolute
+	width: 100%
+	display: flex
+	justify-content: center
+	top: -30px
+.project-slaider__dot-item
+	display: inline-block
+	background: rgba(255, 255, 255, 0.38)
+	cursor: pointer
+	width: 11px
+	height: 11px
+	border-radius: 50%
+	border: 2px solid transparent
+	margin: 0 4px
+.project-slaider__dot-item.active
+	border-color: rgba(255, 255, 255, 0.38)
+	background: transparent
 /*
  * @media
  */
 @media (max-width: 576px)
-	.container
-		width: calc(100% - 90px)
-	.project-slaider__slaid
-		flex-basis: 100%
-		max-width: 100%
-		flex-grow: 0
-		flex-shrink: 0
-	.project-slaider__arrow-item.on-left
-		left: -30px
-	.project-slaider__arrow-item.on-right
-		right: -30px
-@media (min-width: 576px)
-	.container
-		width: 480px
-	.project-slaider__slaid
-		flex-basis: 100%
-		max-width: 100%
-		flex-grow: 0
-		flex-shrink: 0
-	.project-slaider__arrow-item.on-left
-		left: -30px
-	.project-slaider__arrow-item.on-right
-		right: -30px
-@media (min-width: 768px)
-	.container
-		width: 670px
+	.project-slaider__container-title
+		font-size: 22.5px
+	.slaid-title__text
+		font-size: 15px * 1.5
+	.slaid-title__dop-text
+		font-size: 5.7px * 1.5
+	.other-projects__container
+		width: calc(100% - 55px)
 	.project-slaider__slaid
 		flex-basis: 50%
 		max-width: 50%
 		flex-grow: 0
 		flex-shrink: 0
+		padding-right: 5px
+		padding-left: 5px
+	.project-slaider__arrow-item
+		width: 100px
 	.project-slaider__arrow-item.on-left
-		left: -35px
+		left: -30px
+		&:after
+			line-height: 1
+			font-size: 20px
+			top: calc(50% - 20px)
+			padding: 6px 10px 12px 10px
 	.project-slaider__arrow-item.on-right
-		right: -35px
-@media (min-width: 992px)
-	.container
-		width: 900px
+		right: -30px
+		&:after
+			line-height: 1
+			font-size: 20px
+			top: calc(50% - 20px)
+			padding: 8px 10px 10px 10px
+@media (min-width: 576px)
+	.project-slaider__container-title
+		font-size: 22.5px * 2
+	.slaid-title__text
+		font-size: 15px * 2
+	.slaid-title__dop-text
+		font-size: 5.7px * 2
+	.other-projects__container
+		width: 500px
+	.project-slaider__slaid
+		flex-basis: 50%
+		max-width: 50%
+		flex-grow: 0
+		flex-shrink: 0
+		padding-right: 15px
+		padding-left: 15px
+	.project-slaider__arrow-item
+		width: 100px
+	.project-slaider__arrow-item.on-left
+		left: -30px
+		&:after
+			line-height: 1
+			font-size: 30px
+			top: calc(50% - 25px)
+			padding: 6px 10px 14px 10px
+	.project-slaider__arrow-item.on-right
+		right: -30px
+		&:after
+			line-height: 1
+			font-size: 30px
+			top: calc(50% - 25px)
+			padding: 8px 10px 12px 10px
+@media (min-width: 768px)
+	.other-projects__container
+		width: 700px
 	.project-slaider__slaid
 		flex-basis: 33.33333%
 		max-width: 33.33333%
@@ -221,18 +313,30 @@ body
 		left: -30px
 	.project-slaider__arrow-item.on-right
 		right: -30px
-@media (min-width: 1200px)
+@media (min-width: 992px)
 	.other-projects__container
-		width: 600px
+		width: 920px
 	.project-slaider__slaid
 		flex-basis: 25%
 		max-width: 25%
 		flex-grow: 0
 		flex-shrink: 0
 	.project-slaider__arrow-item.on-left
-		left: -60px
+		left: -30px
 	.project-slaider__arrow-item.on-right
-		right: -60px
+		right: -30px
+@media (min-width: 1200px)
+	.other-projects__container
+		width: 960px
+	.project-slaider__slaid
+		flex-basis: 25%
+		max-width: 25%
+		flex-grow: 0
+		flex-shrink: 0
+	.project-slaider__arrow-item.on-left
+		left: -30px
+	.project-slaider__arrow-item.on-right
+		right: -30px
 
 
 
